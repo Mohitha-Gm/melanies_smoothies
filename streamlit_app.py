@@ -45,9 +45,52 @@ if ingredients_list:
 
         data = response.json()
 
+        # UPDATED PART (to match expected table format)
         if "nutrition" in data:
-            nutrition_df = pd.DataFrame([data["nutrition"]])
-            st.dataframe(nutrition_df, use_container_width=True)
+            nutrition = data["nutrition"]
+
+            table_data = [
+                {
+                    "": "carbs",
+                    "family": data["family"],
+                    "genus": data["genus"],
+                    "id": data["id"],
+                    "name": data["name"],
+                    "nutrition": nutrition["carbs"],
+                    "order": data["order"],
+                },
+                {
+                    "": "fat",
+                    "family": data["family"],
+                    "genus": data["genus"],
+                    "id": data["id"],
+                    "name": data["name"],
+                    "nutrition": nutrition["fat"],
+                    "order": data["order"],
+                },
+                {
+                    "": "protein",
+                    "family": data["family"],
+                    "genus": data["genus"],
+                    "id": data["id"],
+                    "name": data["name"],
+                    "nutrition": nutrition["protein"],
+                    "order": data["order"],
+                },
+                {
+                    "": "sugar",
+                    "family": data["family"],
+                    "genus": data["genus"],
+                    "id": data["id"],
+                    "name": data["name"],
+                    "nutrition": nutrition["sugar"],
+                    "order": data["order"],
+                }
+            ]
+
+            df = pd.DataFrame(table_data)
+            st.dataframe(df, use_container_width=True)
+
         else:
             st.error("Sorry, that fruit is not in the API.")
 
@@ -63,10 +106,3 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
         
         st.success(f"Your Smoothie is ordered, {name_on_order}!", icon="✅")
-
-
-
-
-
-
-    
