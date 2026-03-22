@@ -45,46 +45,46 @@ if ingredients_list:
 
         data = response.json()
 
-        # UPDATED PART (to match expected table format)
+        # UPDATED PART (safe + matches expected format)
         if "nutrition" in data:
             nutrition = data["nutrition"]
 
             table_data = [
                 {
                     "": "carbs",
-                    "family": data["family"],
-                    "genus": data["genus"],
-                    "id": data["id"],
-                    "name": data["name"],
-                    "nutrition": nutrition["carbs"],
-                    "order": data["order"],
+                    "family": data.get("family", "N/A"),
+                    "genus": data.get("genus", "N/A"),
+                    "id": data.get("id", "N/A"),
+                    "name": data.get("name", "N/A"),
+                    "nutrition": nutrition.get("carbs", "N/A"),
+                    "order": data.get("order", "N/A"),
                 },
                 {
                     "": "fat",
-                    "family": data["family"],
-                    "genus": data["genus"],
-                    "id": data["id"],
-                    "name": data["name"],
-                    "nutrition": nutrition["fat"],
-                    "order": data["order"],
+                    "family": data.get("family", "N/A"),
+                    "genus": data.get("genus", "N/A"),
+                    "id": data.get("id", "N/A"),
+                    "name": data.get("name", "N/A"),
+                    "nutrition": nutrition.get("fat", "N/A"),
+                    "order": data.get("order", "N/A"),
                 },
                 {
                     "": "protein",
-                    "family": data["family"],
-                    "genus": data["genus"],
-                    "id": data["id"],
-                    "name": data["name"],
-                    "nutrition": nutrition["protein"],
-                    "order": data["order"],
+                    "family": data.get("family", "N/A"),
+                    "genus": data.get("genus", "N/A"),
+                    "id": data.get("id", "N/A"),
+                    "name": data.get("name", "N/A"),
+                    "nutrition": nutrition.get("protein", "N/A"),
+                    "order": data.get("order", "N/A"),
                 },
                 {
                     "": "sugar",
-                    "family": data["family"],
-                    "genus": data["genus"],
-                    "id": data["id"],
-                    "name": data["name"],
-                    "nutrition": nutrition["sugar"],
-                    "order": data["order"],
+                    "family": data.get("family", "N/A"),
+                    "genus": data.get("genus", "N/A"),
+                    "id": data.get("id", "N/A"),
+                    "name": data.get("name", "N/A"),
+                    "nutrition": nutrition.get("sugar", "N/A"),
+                    "order": data.get("order", "N/A"),
                 }
             ]
 
